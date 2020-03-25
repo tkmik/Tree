@@ -3,15 +3,15 @@ using TreeLibrary;
 
 namespace ServiceLibrary.BinaryTree
 {
-    public sealed class IntegerBinaryTree
+    public sealed class IntegerBinaryTree : BaseBinaryTree<int>
     {
-        public BinaryTree<int> BinaryTree = new BinaryTree<int>();
         /// <summary>
         /// создание дерева через ввод в консоли
         /// </summary>
         /// <returns>tree</returns>
-        public void MakingTreeOfInt() => BinaryTree = MakingTreeOfInt_();
-        private BinaryTree<int> MakingTreeOfInt_()
+        public void MakingTreeOfInt() => BinaryTree = MakingTree();
+
+        protected override BinaryTree<int> MakingTree()
         {
             Console.Write("enter the number of values -> ");
             int count;
@@ -27,8 +27,9 @@ namespace ServiceLibrary.BinaryTree
         /// генерация дерева с рандомными значениями
         /// </summary>
         /// <returns>tree</returns>
-        public void GeneratedTreeOfInt() => BinaryTree = GeneratedTreeOfInt_();
-        private BinaryTree<int> GeneratedTreeOfInt_()
+        public void GeneratedTreeOfInt() => BinaryTree = GeneratedTree();
+
+        protected override BinaryTree<int> GeneratedTree()
         {
             Console.WriteLine("enter the number of values -> ");
             int count;
@@ -44,8 +45,9 @@ namespace ServiceLibrary.BinaryTree
         /// созданое дерево в коде
         /// </summary>
         /// <returns>tree</returns>
-        public void CreatedTreeOfInt() => BinaryTree = CreatedTreeOfInt_();
-        private BinaryTree<int> CreatedTreeOfInt_()
+        public void CreatedTreeOfInt() => BinaryTree = CreatedTree();
+
+        protected override BinaryTree<int> CreatedTree()
         {
             int[] array = new int[] {
                 10, 8, 1, 5, 4,
@@ -66,11 +68,6 @@ namespace ServiceLibrary.BinaryTree
                 Console.Write($"{item} is not a integer\r\nenter the number -> ");
         }
 
-        public void Search(int count) => BinaryTree.Search(count);
-
-        public void Remove(int count) => BinaryTree.Remove(count);
-
-        public void PrintValues() => BinaryTree.PrintValues();
         
     }
 }
