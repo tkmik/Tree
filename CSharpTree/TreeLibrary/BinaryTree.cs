@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CSharpTree
+namespace TreeLibrary
 {
     /// <summary>
     /// класс дерева
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <prop name="RootN">корень дерева</prop>
-    sealed class Tree<T> where T : IComparable
+    public sealed class BinaryTree<T> where T : IComparable
     {
         private Node<T> RootN { get; set; }
         /// <summary>
@@ -25,7 +25,7 @@ namespace CSharpTree
             {
                 Value = value;
                 ParentN = node;
-            } 
+            }
         }
 
         /// <summary>
@@ -67,21 +67,21 @@ namespace CSharpTree
                 switch (node.Value.CompareTo(parent.Value))
                 {
                     case -1:
-                            if (parent.LeftN == null)
-                                parent.LeftN = node;
-                            else
-                                Add_(node, parent.LeftN);
-                            return true;
+                        if (parent.LeftN == null)
+                            parent.LeftN = node;
+                        else
+                            Add_(node, parent.LeftN);
+                        return true;
                     case 0: return false;
                     case 1:
-                            if (parent.RightN == null)
-                                parent.RightN = node;
-                            else
-                                Add_(node, parent.RightN);
-                            return true; ;
+                        if (parent.RightN == null)
+                            parent.RightN = node;
+                        else
+                            Add_(node, parent.RightN);
+                        return true; ;
                     default: return false;
                 }
-                
+
             }
         }
         /// <summary>
@@ -227,7 +227,7 @@ namespace CSharpTree
                         queue.Enqueue(queue.Peek().RightN);
                     Console.WriteLine($"\t{queue.Dequeue().Value}");
                 }
-            }     
+            }
             else
                 Console.WriteLine("tree is empty");
         }
