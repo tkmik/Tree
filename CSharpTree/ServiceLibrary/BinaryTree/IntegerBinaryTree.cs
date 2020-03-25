@@ -9,7 +9,7 @@ namespace ServiceLibrary.BinaryTree
         /// создание дерева через ввод в консоли
         /// </summary>
         /// <returns>tree</returns>
-        public void MakingTreeOfInt() => BinaryTree = MakingTree();
+        private void MakingTreeOfInt() => BinaryTree = MakingTree();
 
         protected override BinaryTree<int> MakingTree()
         {
@@ -27,7 +27,7 @@ namespace ServiceLibrary.BinaryTree
         /// генерация дерева с рандомными значениями
         /// </summary>
         /// <returns>tree</returns>
-        public void GeneratedTreeOfInt() => BinaryTree = GeneratedTree();
+        private void GeneratedTreeOfInt() => BinaryTree = GeneratedTree();
 
         protected override BinaryTree<int> GeneratedTree()
         {
@@ -45,7 +45,7 @@ namespace ServiceLibrary.BinaryTree
         /// созданое дерево в коде
         /// </summary>
         /// <returns>tree</returns>
-        public void CreatedTreeOfInt() => BinaryTree = CreatedTree();
+        private void CreatedTreeOfInt() => BinaryTree = CreatedTree();
 
         protected override BinaryTree<int> CreatedTree()
         {
@@ -62,12 +62,68 @@ namespace ServiceLibrary.BinaryTree
         /// проверка на ввод числа
         /// </summary>
         /// <param name="item">возврщаемый параметр введеного значения</param>
-        public void IntParse(out int item)
+        private void IntParse(out int item)
         {
             while (!int.TryParse(Console.ReadLine(), out item))
                 Console.Write($"{item} is not a integer\r\nenter the number -> ");
         }
 
-        
+        public override void Menu()
+        {
+            int operation = 0;
+            do
+            {
+                int count = 0;
+                Console.Write("Enter the number of operation:\r\n" +
+                   "1. Making tree of integer\r\n" +
+                   "2. Generate tree of integer\r\n" +
+                   "3. Created tree of integer\r\n" +
+                   "4. Node search\r\n" +
+                   "5. Node delete\r\n" +
+                   "6. Show values\r\n" +
+                   "0. Back\r\n" +
+                   "\r\n-> ");
+                IntParse(out operation);
+                switch (operation)
+                {
+                    case 1:
+
+                        MakingTreeOfInt();
+                        Console.WriteLine();
+                        break;
+                    case 2:
+                        GeneratedTreeOfInt();
+                        Console.WriteLine();
+                        break;
+                    case 3:
+                        CreatedTreeOfInt();
+                        Console.WriteLine();
+                        break;
+                    case 4:
+                        Console.Write("Enter the item of search -> ");
+                        IntParse(out count);
+                        Search(count);
+                        Console.WriteLine();
+                        break;
+                    case 5:
+                        Console.Write("Enter the item of delete -> ");
+                        IntParse(out count);
+                        Remove(count);
+                        Console.WriteLine();
+                        break;
+                    case 6:
+                        Console.WriteLine("Values -> ");
+                        PrintValues();
+                        Console.WriteLine();
+                        break;
+                    case 0:
+                        operation = 0;
+                        break;
+                    default: operation = -1; break;
+                }
+            } while (operation != 0);
+        }
+
+
     }
 }
