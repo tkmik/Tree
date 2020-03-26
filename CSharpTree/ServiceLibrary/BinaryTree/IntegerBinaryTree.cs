@@ -13,6 +13,7 @@ namespace ServiceLibrary.BinaryTree
 
         protected override BinaryTree<int> MakingTree()
         {
+            BinaryTree = new BinaryTree<int>();
             Console.Write("enter the number of values -> ");
             int count;
             IntParse(out count);
@@ -31,6 +32,7 @@ namespace ServiceLibrary.BinaryTree
 
         protected override BinaryTree<int> GeneratedTree()
         {
+            BinaryTree = new BinaryTree<int>();
             Console.WriteLine("enter the number of values -> ");
             int count;
             IntParse(out count);
@@ -49,6 +51,7 @@ namespace ServiceLibrary.BinaryTree
 
         protected override BinaryTree<int> CreatedTree()
         {
+            BinaryTree = new BinaryTree<int>();
             int[] array = new int[] {
                 10, 8, 1, 5, 4,
                 -4, 0, 13, -7, 9,
@@ -70,10 +73,9 @@ namespace ServiceLibrary.BinaryTree
 
         public override void Menu()
         {
-            int operation = 0;
+            int operation;
             do
             {
-                int count = 0;
                 Console.Write("Enter the number of operation:\r\n" +
                    "1. Making tree of integer\r\n" +
                    "2. Generate tree of integer\r\n" +
@@ -84,6 +86,7 @@ namespace ServiceLibrary.BinaryTree
                    "0. Back\r\n" +
                    "\r\n-> ");
                 IntParse(out operation);
+                int count;
                 switch (operation)
                 {
                     case 1:
