@@ -11,15 +11,15 @@ namespace CSharpTree
         }
         static void Menu()
         {
-            int operation = 0;
+            int operation;
             do
             {
-                int count = 0;
                 Console.Write("Enter the number of operation:\r\n" +
                    "1. Integer Binary Tree\r\n" +
                    "0. Exit\r\n"+
                    "\r\n-> ");
-                IntParse(out operation);
+                while (!int.TryParse(Console.ReadLine(), out operation))
+                    Console.Write($"{operation} is not a integer\r\nenter the number -> ");
                 switch (operation)
                 {
                     case 1:
@@ -32,12 +32,6 @@ namespace CSharpTree
                     default: operation = -1; break;
                 }
             } while (operation != 0);
-        }
-
-        static void IntParse(out int item)
-        {
-            while (!int.TryParse(Console.ReadLine(), out item))
-                Console.Write($"{item} is not a integer\r\nenter the number -> ");
         }
     }
 }
